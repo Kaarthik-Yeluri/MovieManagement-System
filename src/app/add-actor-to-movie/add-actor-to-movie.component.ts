@@ -24,10 +24,9 @@ export class AddActorToMovieComponent implements OnInit {
     console.log(title, this.title);
   }
 
-  onAddActor(title:string, name: string){
-    this.title = title;
-    this.name = name;
-    this.dbService.addActorToMovie(title, name).subscribe(result => {
+  onAddActor(){
+    let obj = {title: this.title, name: this.name};
+    this.dbService.addActorToMovie(obj).subscribe(result => {
       this.router.navigate(["/listmovies"]);
     })
   }

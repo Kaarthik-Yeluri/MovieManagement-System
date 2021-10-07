@@ -47,22 +47,24 @@ module.exports = {
             res.json();
         })
     },
-    // adds an actor to the list of actors in a movie
-    addActor: function (req, res) {
-        Movie.findOne({ title: req.body.title }, function (err, movie) {
-            if (err) return res.status(400).json(err);
-            if (!movie) return res.status(404).json();
-            Actor.findOne({ name: req.body.fullName }, function (err, actor) {
+    actorAdd: function (req, res) {
+        Movie.findOne({title: req.params.title }, function (err, movie) {
+            if(err) return res.status(400).json(err);
+            if(!movie) return res.status(404).json("Movie not found")
+
+            Actor.findOne({name: req.params.name}, function (err, actor) {
                 if (err) return res.status(400).json(err);
-                if (!actor) return res.status(404).json();
-                movie.actors.push(actor._id)
+                if (!actor) return res.status(404).json("Actor not found");
+
+                movie.actors.push(actor);
                 movie.save(function (err) {
                     if (err) return res.status(500).json(err);
                     res.json(movie);
                 });
             })
-        });
+        })
     },
+
     
     // deletes all the movies between the years specified
     deleteMoviesbyYear: function (req, res) {

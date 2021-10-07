@@ -37,9 +37,11 @@ export class DatabaseService {
     return this.http.post("/movies", data, httpOptions);
   }
   addActorToMovie(data:{title: string, name: string}){
-    let url = "/movAct"
+    let url = "/movies/"+data.title+"/"+data.name;
+    console.log(data.title + "||" +data.name)
     return this.http.put(url, data, httpOptions);
   }
+
   deleteMovie(id:string){
     let url = "/movies/" + id;
     return this.http.delete(url, httpOptions);

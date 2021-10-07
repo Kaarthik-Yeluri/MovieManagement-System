@@ -23,7 +23,7 @@ app.put('/actors/:id', actors.updateOne);
 app.delete('/actors/:id', actors.deleteOne);
 //Movie RESTFul  endpoints
 app.get('/movies', movies.getAll);
-app.put('/movAct', movies.addActor)
+app.put('/movies/:title/:name', movies.actorAdd)
 app.post('/movies', movies.createOne);
 app.delete('/movies/:id', movies.deleteOne);
 

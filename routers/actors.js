@@ -33,7 +33,8 @@ module.exports = {
     },
     // updates an actor 
     updateOne: function (req, res) {
-        Actor.findOneAndUpdate({ _id: req.params.id }, req.body, function (err, actor) {
+        Actor.findOneAndUpdate({ _id: req.params.id }, 
+            req.body, function (err, actor) {
             if (err) return res.status(400).json(err);
             if (!actor) return res.status(404).json();
             res.json(actor);
@@ -46,6 +47,7 @@ module.exports = {
             res.json();
         });
     },
+    
     // adds a movie to the actors 
     addMovie: function (req, res) {
         Actor.findOne({ _id: req.params.id }, function (err, actor) {
