@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <title>Bootstrap Example</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+    <div class="row">
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Birth Year</th>
+                        <th>Select Actor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of actorsDB">
+                      <td> {{item.name}}</td>
+                      <td>{{item.bYear}}</td>
+                      <td><button type="submit" class="btn btn-primary" (click)="onDeleteActor(item)">SELECT</button></td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Year</th>
+                        <th>Select Movie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of moviesDB">
+                      <td>{{item.title}}</td>
+                      <td>{{item.year}}</td>
+                      <td><button type="submit" class="btn btn-primary" (click)="onDeleteActor(item)">SELECT</button></td>
+                    </tr>
+                  </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
